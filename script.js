@@ -95,43 +95,32 @@ window.addEventListener('scroll', function() {
 });
 
 // Contact form handling
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
-    
-    // Simple validation
-    if (!name || !email || !subject || !message) {
-        showNotification('Please fill in all fields.', 'error');
-        return;
+
+    const formData = {
+        name: this.name.value,
+        email: this.email.value,
+        subject: this.subject.value,
+        message: this.message.value
+    };
+
+    try {
+        const response = await fetch('https://uqsj0eaay6.execute-api.eu-north-1.amazonaws.com/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            showNotification('Thank you for your message! I have been notified and will get back to you soon.', 'success');
+            this.reset();
+        } else {
+            showNotification('There was an error sending your message. Please try again later.', 'error');
+        }
+    } catch (err) {
+        showNotification('There was an error sending your message. Please try again later.', 'error');
     }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        showNotification('Please enter a valid email address.', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitButton = this.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Sending...';
-    submitButton.disabled = true;
-    
-    // Simulate API call delay
-    setTimeout(() => {
-        showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
-        this.reset();
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    }, 2000);
 });
 
 // Notification system
@@ -291,16 +280,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Dark mode toggle (optional feature)
-function createDarkModeToggle() {
-    const toggleButton = document.createElement('button');
-    toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
-    toggleButton.className = 'dark-mode-toggle';
-    toggleButton.style.cssText = `
+// Color blind mode toggle only
+function createColorBlindToggle() {
+    const colorBlindButton = document.createElement('button');
+    colorBlindButton.innerHTML = '<i class="fas fa-eye"></i>';
+    colorBlindButton.className = 'accessibility-toggle color-blind-toggle';
+    colorBlindButton.title = 'Toggle color blind mode';
+    colorBlindButton.style.cssText = `
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background: var(--primary-color);
+        background: #6366f1;
         color: white;
         border: none;
         border-radius: 50%;
@@ -312,25 +302,13 @@ function createDarkModeToggle() {
         z-index: 1000;
         transition: all 0.3s ease;
     `;
-    
-    toggleButton.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-        const icon = this.querySelector('i');
-        
-        if (document.body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
+    colorBlindButton.addEventListener('click', function() {
+        document.body.classList.toggle('color-blind');
     });
-    
-    document.body.appendChild(toggleButton);
+    document.body.appendChild(colorBlindButton);
 }
 
-// Initialize dark mode toggle (uncomment to enable)
-// document.addEventListener('DOMContentLoaded', createDarkModeToggle);
+document.addEventListener('DOMContentLoaded', createColorBlindToggle);
 
 // Console easter egg
 console.log(`
