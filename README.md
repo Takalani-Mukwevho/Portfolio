@@ -38,6 +38,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Contact
 
-Feel free to reach out if you have any questions or suggestions!
+Feel free to reach out if you have any questions or suggestions
 
 ---
