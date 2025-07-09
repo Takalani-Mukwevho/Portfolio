@@ -572,6 +572,47 @@ section {
     transform: translateY(-2px);
 }
 
+/* Color blind mode styles */
+body.color-blind {
+    --primary-color: #000;
+    --primary-dark: #222;
+    --secondary-color: #fff;
+    --accent-color: #ffb300; /* orange-yellow, color blind safe */
+    --text-primary: #000;
+    --text-secondary: #222;
+    --text-light: #444;
+    --background: #fff;
+    --background-alt: #f3f4f6;
+    --border-color: #000;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.2);
+    background: var(--background);
+    color: var(--text-primary);
+}
+
+body.color-blind .navbar {
+    background: var(--background) !important;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-lg);
+}
+
+body.color-blind section, body.color-blind .card, 
+body.color-blind .education-item, body.color-blind .contact-method 
+{
+    background: var(--background-alt);
+    color: var(--text-primary);
+}
+
+body.color-blind input, body.color-blind textarea {
+    background: var(--background);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+body.color-blind .notification {
+    background: var(--accent-color) !important;
+    color: var(--text-primary) !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
