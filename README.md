@@ -25,11 +25,11 @@ My modern, responsive portfolio website. Built with HTML5, CSS3, and vanilla Jav
 - **Layout**: CSS Grid and Flexbox for responsive layouts
 - **Animations**: Smooth hover effects and scroll animations
 - **Mobile-First**: Responsive design starting from mobile
+- **Color Blind Accessible**
 
 ## 🎯 Future Enhancements
 
 - Dark mode toggle
-- Advanced animations with Framer Motion
 - Backend integration for contact form
 
 ## 📄 License
