@@ -37,6 +37,7 @@ My modern, responsive portfolio website. Built with HTML5, CSS3, and vanilla Jav
 This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Contact
+<a href="https://takalani-mukwevho.github.io/portfolio/">Portfolio Link</a>
 
 Feel free to reach out if you have any questions or suggestions
 
