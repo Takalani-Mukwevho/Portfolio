@@ -28,13 +28,9 @@ My modern, responsive portfolio website. Built with HTML5, CSS3, and vanilla Jav
 - **Color Blind Accessible**
 
 ## 🎯 Future Enhancements
-
-- Dark mode toggle
 - Backend integration for contact form
 
 ## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Contact
 <a href="https://takalani-mukwevho.github.io/portfolio/">Portfolio Link</a>
