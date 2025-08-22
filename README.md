@@ -27,8 +27,11 @@ My modern, responsive portfolio website. Built with HTML5, CSS3, and vanilla Jav
 - **Mobile-First**: Responsive design starting from mobile
 - **Color Blind Accessible**
 
+## 📧 Contact Form
+
+The contact form is powered by [Formspree](https://formspree.io/), ensuring reliable email delivery. When visitors submit the form, messages are sent directly to the site owner's email address.
+
 ## 🎯 Future Enhancements
-- Backend integration for contact form
 
 ## 📄 License
 

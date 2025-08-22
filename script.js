@@ -94,27 +94,25 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Contact form handling
+// Contact form handling with Formspree
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const formData = {
-        name: this.name.value,
-        email: this.email.value,
-        subject: this.subject.value,
-        message: this.message.value
-    };
+    const form = this;
+    const formData = new FormData(form);
 
     try {
-        const response = await fetch('https://uqsj0eaay6.execute-api.eu-north-1.amazonaws.com/contact', {
+        const response = await fetch(form.action, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
         });
 
         if (response.ok) {
             showNotification('Thank you for your message! I have been notified and will get back to you soon.', 'success');
-            this.reset();
+            form.reset();
         } else {
             showNotification('There was an error sending your message. Please try again later.', 'error');
         }
